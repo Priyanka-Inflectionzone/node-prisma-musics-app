@@ -8,7 +8,9 @@ async function main() {
            lastName  : 'Kale',
            email     : 'priyanka@ymail.com',
            phone     : '9865741235',
-           createdAt : new Date('2020-10-11')} 
+           createdAt : new Date('2020-10-11'),
+           updatedAt :
+          } 
         
 
 })
