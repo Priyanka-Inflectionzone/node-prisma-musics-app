@@ -48,8 +48,18 @@ async function main() {
 
 // console.dir(withAlbum, { depth: null })
 // }
+// const studio1 = [];
+const episodes = await prisma.podcastEpisode.findMany({
+  where :{},
+  distinct : ['episodeName'],
+  orderBy : {
+    podcastId : 'asc'
+  }
+  
+}) 
 
-
+ 
+ console.dir(episodes);
 }
 
 main()
