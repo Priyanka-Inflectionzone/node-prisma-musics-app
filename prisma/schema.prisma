@@ -90,10 +90,10 @@ model Single {
   id             String     @id @default(uuid())
   singleName     String
   artistNameInfo Artist     @relation(fields: [artistId], references: [id])
-  albumIdInfo    Album      @relation(fields: [albumId], references: [id])
+  albumIdInfo    Album?     @relation(fields: [albumId], references: [id])
   releaseDate    DateTime
   artistId       String
-  albumId        String
+  albumId        String?
   playlists      Playlist[]
 }
 
@@ -117,7 +117,7 @@ model Studio {
   phone      String
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
-  deletedAt  DateTime
+  deletedAt  DateTime?
   albums     Album[]
   audiobooks Audiobook[]
   podcasts   Podcast[]
