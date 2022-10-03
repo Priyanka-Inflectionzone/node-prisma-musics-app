@@ -67,25 +67,47 @@ async function main() {
 //  console.table(sorted);
 // }
 
-// const playlists = await prisma.playlist.findMany({
-//    select :{
-//     id : true,
-//     createdByUserId  : true,
-//     followers : {}
-//    }
+
+// const users = [{}];
+// const user1 = await prisma.userInfo.findUnique({
+//   where : {
+//     id :'1'
+//   },
+//       include:{
+//       playlistsCreated  : true,
+//       playlistsFollowed : true
+//      },
+//     })
+//     users.push({user1});
+   
+
+//     const user2 = await prisma.userInfo.findUnique({
+//       where : {
+//         id :'2'
+//       },
+//           include:{
+//           playlistsCreated  : true,
+//           playlistsFollowed : true
+//          },
+//         })
+
+//         users.push({user2})
     
-//   }) 
-//   console.dir(playlists);
-const user = await prisma.userInfo.findMany({
-  where:{
-      id : 'id'},
-      include:{
-      playlistsCreated  : true,
-      playlistsFollowed : true
-     }
-     
-    }) 
-    console.dir(user);
+        // const user3 = await prisma.userInfo.findUnique({
+        //   where : {
+        //     id :'3'
+        //   },
+        //       include:{
+        //       playlistsCreated  : true,
+        //       playlistsFollowed : true
+        //      },
+        //     })
+        //     users.push(user3);
+
+
+    
+    
+    //console.dir(users, {depth: null});
 
     // const updateUser = await prisma.userInfo.update({
     //   where: {
@@ -112,14 +134,103 @@ const user = await prisma.userInfo.findMany({
   //   }
   // })
 
-  // // artists1.sort(function(a,b){
-  // //   let x = a.userinfo.firstName.toUpperCase;
-  // //   let y = b.userinfo.firstName.toUpperCase;
-  // //   return x==y ? 0 : x<y ? -1 : 1;
-    
-  // // })
-  // console.dir( artists1);
-   
+  // artists1.sort(function(a,b){
+  //   let x = a.userinfo.firstName.toUpperCase();
+  //   let y = b.userinfo.firstName.toUpperCase();
+  //   return x==y ? 0 : x<y ? -1 : 1;  
+  // }
+  // )
+  
+  // console.dir( artists1, {depth:null});
+
+  // const podcastinfo = await prisma.podcast.findMany({
+  //   select:{
+  //     id:true,
+  //     episode: true,
+  //     podcastEpisodes:{
+  //       select :
+  //       {
+  //         episodeName :true
+  //       }
+
+  //     } 
+  //   }
+  // })
+
+  // console.dir(podcastinfo,{depth:null})
+
+  const studios = [];
+
+  const studioInfo1 = await prisma.studio.findUnique({
+    where : {
+      id : '1'
+    },
+  select:{
+    name : true,
+    audiobooks :{
+      select:{
+        id: true
+      }
+    },
+    podcasts :{ 
+      select:{
+      id: true
+    }},
+    albums : {
+       select:{
+      id: true
+    }}
+  }
+  })
+  studios.push(studioInfo1);
+
+  const studioInfo2 = await prisma.studio.findUnique({
+    where : {
+      id : '2'
+    },
+  select:{
+    name : true,
+    audiobooks :{
+      select:{
+        id: true
+      }
+    },
+    podcasts :{ 
+      select:{
+      id: true
+    }},
+    albums : {
+       select:{
+      id: true
+    }}
+  }
+  })
+  studios.push(studioInfo2);
+
+  const studioInfo3 = await prisma.studio.findUnique({
+    where : {
+      id : '3'
+    },
+  select:{
+    name : true,
+    audiobooks :{
+      select:{
+        id: true
+      }
+    },
+    podcasts :{ 
+      select:{
+      id: true
+    }},
+    albums : {
+       select:{
+      id: true
+    }}
+  }
+  })
+  studios.push(studioInfo3);
+
+  console.dir(studios, {depth:null}) ;
 }
 
 main()
