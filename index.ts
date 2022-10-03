@@ -159,79 +159,112 @@ async function main() {
 
   // console.dir(podcastinfo,{depth:null})
 
-  const studios = [];
+  // const studios = [];
 
-  const studioInfo1 = await prisma.studio.findUnique({
-    where : {
-      id : '1'
-    },
-  select:{
-    name : true,
-    audiobooks :{
-      select:{
-        id: true
-      }
-    },
-    podcasts :{ 
-      select:{
-      id: true
-    }},
-    albums : {
-       select:{
-      id: true
-    }}
-  }
-  })
-  studios.push(studioInfo1);
+  // const studioInfo1 = await prisma.studio.findUnique({
+  //   where : {
+  //     id : '1'
+  //   },
+  // select:{
+  //   name : true,
+  //   audiobooks :{
+  //     select:{
+  //       id: true
+  //     }
+  //   },
+  //   podcasts :{ 
+  //     select:{
+  //     id: true
+  //   }},
+  //   albums : {
+  //      select:{
+  //     id: true
+  //   }}
+  // }
+  // })
+  // studios.push(studioInfo1);
 
-  const studioInfo2 = await prisma.studio.findUnique({
-    where : {
-      id : '2'
-    },
-  select:{
-    name : true,
-    audiobooks :{
-      select:{
-        id: true
-      }
-    },
-    podcasts :{ 
-      select:{
-      id: true
-    }},
-    albums : {
-       select:{
-      id: true
-    }}
-  }
-  })
-  studios.push(studioInfo2);
+  // const studioInfo2 = await prisma.studio.findUnique({
+  //   where : {
+  //     id : '2'
+  //   },
+  // select:{
+  //   name : true,
+  //   audiobooks :{
+  //     select:{
+  //       id: true
+  //     }
+  //   },
+  //   podcasts :{ 
+  //     select:{
+  //     id: true
+  //   }},
+  //   albums : {
+  //      select:{
+  //     id: true
+  //   }}
+  // }
+  // })
+  // studios.push(studioInfo2);
 
-  const studioInfo3 = await prisma.studio.findUnique({
-    where : {
-      id : '3'
-    },
-  select:{
-    name : true,
-    audiobooks :{
-      select:{
-        id: true
-      }
-    },
-    podcasts :{ 
-      select:{
-      id: true
-    }},
-    albums : {
-       select:{
-      id: true
-    }}
-  }
-  })
-  studios.push(studioInfo3);
+  // const studioInfo3 = await prisma.studio.findUnique({
+  //   where : {
+  //     id : '3'
+  //   },
+  // select:{
+  //   name : true,
+  //   audiobooks :{
+  //     select:{
+  //       id: true
+  //     }
+  //   },
+  //   podcasts :{ 
+  //     select:{
+  //     id: true
+  //   }},
+  //   albums : {
+  //      select:{
+  //     id: true
+  //   }}
+  // }
+  // })
+  // studios.push(studioInfo3);
 
-  console.dir(studios, {depth:null}) ;
+  // console.dir(studios, {depth:null}) ;
+
+
+
+const singleInfo = await prisma.single.findMany({
+select:
+{
+ releaseDate  : true
 }
+})
+
+const before = singleInfo.filter((obj) => {
+ return obj.releaseDate < new Date ('2022,5,1')
+});
+
+console.dir(before, {depth :null});
+
+const after = singleInfo.filter((obj) => {
+  return obj.releaseDate > new Date ('2022,5,31')
+ });
+ 
+ console.dir(after, {depth : null})
+
+//console.dir(singleInfo, {depth: null})
+
+
+
+// console.log(before);
+// console.log(after);
+
+
+
+}
+
+
 
 main()
 
